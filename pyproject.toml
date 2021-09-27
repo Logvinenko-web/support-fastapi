@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "support_api"
+version = "0.1.0"
+description = ""
+authors = ["Anton Logvinenko <logvinenko.elit@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = {extras = ["all"], version = "^0.68.1"}
+alembic = "^1.7.1"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+psycopg2 = "^2.9.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

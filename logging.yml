@@ -1,0 +1,37 @@
+version: 1
+
+x-level: &x-level INFO
+x-sql-level: &x-sql-level ERROR
+
+disable_existing_loggers: False
+
+formatters:
+  generic:
+    class: logging.Formatter
+    format: "%(asctime)s.%(msecs)03d %(levelname)s %(name)s: %(message)s"
+    datefmt: '%Y-%m-%d %H:%M:%S'
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    formatter: generic
+    stream: ext://sys.stdout
+loggers:
+  root: &root-logger
+    level: *x-level
+    handlers:
+      - console
+  app: &default-logger
+    <<: *root-logger
+    propagate: false
+  gunicorn.error: &http-error
+    <<: *default-logger
+    propagate: false
+  gunicorn.access: &http-access
+    <<: *default-logger
+    propagate: false
+  uvicorn.error: *http-error
+  uvicorn.access: *http-access
+  sqlalchemy.engine:
+    <<: *default-logger
+    level: *x-sql-level
