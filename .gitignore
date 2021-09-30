@@ -7,7 +7,6 @@ idea
 *.egg
 
 dist
-src/settings.py
 
 venv
 .env
