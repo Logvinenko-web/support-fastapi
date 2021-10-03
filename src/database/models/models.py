@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import String
+from sqlalchemy import String, Integer
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.schema import Column, ForeignKey
 from src.database.database import Base
@@ -41,6 +41,27 @@ class Tasks(Base):
     __tablename__ = 'tasks'
 
     id = Column(String, name="id", primary_key=True, default=generate_uuid)
-    title =Column(String, nullable=False)
+    title = Column(String, nullable=False)
     description = Column(String, nullable=False)
     status = Column(String, nullable=False)
+
+
+
+class Education_Days(Base):
+    __tablename__ = 'education_days'
+
+    id = Column(String, name="id", primary_key=True, default=generate_uuid)
+    day = Column(String, nullable=False)
+    education_task = relationship("Education_Tasks")
+
+
+class Education_Tasks(Base):
+    __tablename__ = 'education_tasks'
+
+    id = Column(String, name="id", primary_key=True, default=generate_uuid)
+    name = Column(String, nullable=False)
+    link = Column(String, nullable=False)
+    description = Column(String, nullable=False)
+    education_day_id = Column(String, ForeignKey('education_days.id'))
+
+

@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status
 
-from src.database.models.models import Categories, Documentations
+from src.database.models.models import Categories, Documentations, Education_Days
 
 
 def get_all(db: Session):
@@ -71,3 +71,7 @@ def showDocumentations(id: str, db: Session):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f"Documentation with the id {id} is not available")
     return doc
+
+
+
+

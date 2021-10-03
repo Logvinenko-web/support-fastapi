@@ -7,6 +7,7 @@ from ..controllers import category
 from ..controllers.category import createDocumentation, showDocumentations
 from ..schema.categories.schema import CategoryModel, CategoryModelResponse
 from ..schema.documentation.schema import DocumentationModelBase
+from ..schema.education.schema import EducationDayModelBase
 
 routerCategories = APIRouter(
     prefix="/categories",
@@ -58,6 +59,5 @@ def create_documentation(
 def get_documentations(id, db: Session = Depends(get_db)):
     return showDocumentations(id, db)
 
-# @routerCategories.get("/categories/{category_id}/documentations/{documentation_id}")
-# def get_documentation_id(uuid, db: Session = Depends(get_db)):
-#     return
+
+
