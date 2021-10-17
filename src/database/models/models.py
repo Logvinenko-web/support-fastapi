@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import String, Integer
+from sqlalchemy import String, Integer, Text
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.schema import Column, ForeignKey
 from src.database.database import Base
@@ -65,3 +65,28 @@ class Education_Tasks(Base):
     education_day_id = Column(String, ForeignKey('education_days.id'))
 
 
+class Tabs(Base):
+    __tablename__ = 'tabs'
+
+    id = Column(String, name="id", primary_key=True, default=generate_uuid)
+    name = Column(String, nullable=False)
+    category_id = Column(String, ForeignKey('categories.id'))
+
+
+class Explanation(Base):
+    __tablename__ = 'explanation'
+
+    id = Column(String, name="id", primary_key=True, default=generate_uuid)
+    description = Column(Text, nullable=False)
+    category_id = Column(String, ForeignKey('categories.id'))
+    tab_id = Column(String, ForeignKey('tabs.id'))
+
+
+class Instructions(Base):
+    __tablename__ = 'instructions'
+
+    id = Column(String, name="id", primary_key=True, default=generate_uuid)
+    name = Column(String, nullable=False)
+    link = Column(String, nullable=False)
+    category_id = Column(String, ForeignKey('categories.id'))
+    tab_id = Column(String, ForeignKey('tabs.id'))
