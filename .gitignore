@@ -20,6 +20,6 @@ __pycache__/
 *.py[cod]
 .pyc
 *.pyc
-
+src/settings
 !src/db/migrations/.gitkeep
 src/db/migrations/*
