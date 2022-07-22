@@ -10,7 +10,8 @@ dist
 
 venv
 .env
-./src/settings
+./src/settings.py
+/src/settings.py
 local_config.py
 social_app.py
 .env.dev
